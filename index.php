@@ -1,9 +1,8 @@
-<?php  ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Name Reminder</title>
   </head>
   <body>
     <form action = "saveNumber.php" method = "POST">
