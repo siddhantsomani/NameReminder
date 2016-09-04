@@ -27,6 +27,6 @@
   mysqli_close($conn);
 }
 else {
-  echo "Number not valid";
+  echo "Number not valid.<br><a href='index.php'>Click Here To Try Again</a>";
 }
 ?>
