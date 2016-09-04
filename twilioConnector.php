@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
-function sendMessage(){
-// Use the REST API Client to make requests to the Twilio REST API
+function sendMessage($number,$name){
+
 use Twilio\Rest\Client;
      // Set AccountSid and AuthToken
      require 'Config.php';
@@ -9,7 +9,7 @@ use Twilio\Rest\Client;
      $client = new Client($AccountSid, $AuthToken);
 
      $people = array(
-         "+919092670035" => "Hemant"
+         $number => $name
      );
 
      foreach ($people as $number => $name) {
@@ -25,7 +25,7 @@ use Twilio\Rest\Client;
              )
          );
 
-         // Display a confirmation message on the screen
+         // Confirmation message
          echo "Sent message to $name";
      }
 }
