@@ -9,9 +9,13 @@ $client = new Services_Twilio($account_sid, $auth_token);
 $message = $client->account->messages->sendMessage(
   '+12016465241', // From a valid Twilio number
   $number, // Text this number
-  "Hello $name, monkey!"
+  "Your Name is $name! Remember remember !"
 );
-
+if(isset($message->code))
+{
+  for($i =0 ; $i<4;$i++)
+  //logging procedure here and then try upto 5 times
+}
 print $message->sid;
 
   }
