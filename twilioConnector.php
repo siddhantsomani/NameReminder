@@ -1,32 +1,18 @@
 <?php
-require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
 function sendMessage($number,$name){
+require('twilio-php/Services/Twilio.php');
 
-use Twilio\Rest\Client;
-     // Set AccountSid and AuthToken
-     require 'Config.php';
-     // Instantiate a new Twilio Rest Client
-     $client = new Client($AccountSid, $AuthToken);
+$account_sid = 'AC6a238391dcee4e865af1449fa5deff29';
+$auth_token = '6048fa8ba94e1bdcd2e65467e05d3fcb';
 
-     $people = array(
-         $number => $name
-     );
+$client = new Services_Twilio($account_sid, $auth_token);
+$message = $client->account->messages->sendMessage(
+  '+12016465241', // From a valid Twilio number
+  $number, // Text this number
+  "Hello $name, monkey!"
+);
 
-     foreach ($people as $number => $name) {
+print $message->sid;
 
-         $sms = $client->account->messages->create(
-
-             $number,
-
-             array(
-                 'from' => "+12016465241",
-
-                 'body' => "Hey $name, Monkey Party at 6PM. Bring Bananas!"
-             )
-         );
-
-         // Confirmation message
-         echo "Sent message to $name";
-     }
-}
-?>
+  }
+ ?>
