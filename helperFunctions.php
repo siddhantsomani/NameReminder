@@ -11,7 +11,7 @@
     $ans = $arr['gmt_offset'];
     $nightStart = strtotime(date("H:i:s", mktime(22, 0, 0)));
     $nightEnd = strtotime(date("H:i:s", mktime(6, 0, 0)));
-    $currentTime = strtotime(date('H:i:s', strtotime("now"))) - $ans;
+    $currentTime = strtotime(date('H:i:s', strtotime("now"))) + $ans;
     mysqli_close($conn);
     if($currentTime<=$nightStart && $currentTime>=$nightEnd){
       return true;
